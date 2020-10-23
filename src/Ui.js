@@ -103,7 +103,6 @@ class UI{
 
     updateBackground(weather){
         var element = this.conditions.find(element=> element.name === weather);
-        console.log(weather,element)
         let image ='https://images.unsplash.com/photo-1534794048419-48e110dca88e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1248&q=80'
         if(element){
             image = element.value

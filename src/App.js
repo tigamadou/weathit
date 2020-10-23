@@ -20,7 +20,6 @@ class App{
                     that.UI.setInputValue(that.user.city)
                     that.getWeather()
                   }).catch((error)=>{
-                    console.log(error)
                     return false
                 });
     }
@@ -43,7 +42,6 @@ class App{
                     that.parseResponse(response)     
                 })
                 .catch((error)=>{
-                    console.log(error)
                     this.toggleError()
                     return false
                 });
