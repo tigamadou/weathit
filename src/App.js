@@ -34,7 +34,7 @@ class App{
     async getWeather(){
         this.toggleLoading()
         let that = this
-        await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.user.city}&appid=${this.OPENWEATHERAPIKEY}`, {mode: 'cors'})
+        await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.user.city}&appid=${this.OPENWEATHERAPIKEY}&units=metric`, {mode: 'cors'})
                 .then((response)=>{
                     return response.json();
                 })
@@ -50,8 +50,10 @@ class App{
     }
 
     parseResponse(response){
-        console.log(response)
-        if(response.cod !== 200){this.toggleError()}
+        
+        if(response.cod !== 200){this.toggleError(); return }
+
+        this.UI.renderResult(response)
     }
     submit(){
         let value = this.UI.getInputValue();
@@ -60,6 +62,10 @@ class App{
         }
         this.user.city = value
         this.getWeather()
+    }
+
+    showResult(){
+
     }
 
     toggleError(error){
