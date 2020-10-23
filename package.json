@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
+    "build": "webpack --mode production",
     "start": "webpack-dev-server --open",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "eslint": "npx eslint . --fix",
+    "stylelint": "npx stylelint \"**/*.{css,scss}\" --fix"
   },
   "repository": "git@github.com:tigamadou/weathit.git",
   "author": "Amadou Ibrahim",

@@ -1,74 +1,64 @@
-import UI from './Ui'
-class App{
-    
-    constructor(OPENWEATHERAPIKEY,IPINFOAPIKEY){        
-        this.OPENWEATHERAPIKEY = OPENWEATHERAPIKEY
-        this.IPINFOAPIKEY = IPINFOAPIKEY
-        this.isLoading = false;
-        this.UI = new UI()
-    }
+import UI from './Ui';
 
-    async init(){
-        let that = this
-        this.toggleLoading()
-        await fetch('https://ipinfo.io/?token=ac80e2fd7ebd42', {mode: 'cors'})
-                .then((response)=>{
-                    return response.json();
-                }).then(function(response) {
-                    that.toggleLoading()
-                    that.user = response                    
-                    that.UI.setInputValue(that.user.city)
-                    that.getWeather()
-                  }).catch((error)=>{
-                    return false
-                });
-    }
+class App {
+  constructor(OPENWEATHERAPIKEY, IPINFOAPIKEY) {
+    this.OPENWEATHERAPIKEY = OPENWEATHERAPIKEY;
+    this.IPINFOAPIKEY = IPINFOAPIKEY;
+    this.isLoading = false;
+    this.UI = new UI();
+  }
 
-    toggleLoading(){
-        this.isLoading = !this.isLoading
-        this.UI.toggleLoading(this.isLoading);
-    }
+  async init() {
+    const that = this;
+    this.toggleLoading();
+    await fetch('https://ipinfo.io/?token=ac80e2fd7ebd42', { mode: 'cors' })
+      .then((response) => response.json()).then((response) => {
+        that.toggleLoading();
+        that.user = response;
+        that.UI.setInputValue(that.user.city);
+        that.getWeather();
+      }).catch(() => false);
+  }
 
-    
-    async getWeather(){
-        this.toggleLoading()
-        let that = this
-        await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.user.city}&appid=${this.OPENWEATHERAPIKEY}&units=metric`, {mode: 'cors'})
-                .then((response)=>{
-                    return response.json();
-                })
-                .then(function(response) {
-                    that.toggleLoading()
-                    that.parseResponse(response)     
-                })
-                .catch((error)=>{
-                    this.toggleError()
-                    return false
-                });
-    }
+  toggleLoading() {
+    this.isLoading = !this.isLoading;
+    this.UI.toggleLoading(this.isLoading);
+  }
 
-    parseResponse(response){
-        
-        if(response.cod !== 200){this.toggleError(); return }
+  async getWeather() {
+    this.toggleLoading();
+    const that = this;
+    await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.user.city}&appid=${this.OPENWEATHERAPIKEY}&units=metric`, { mode: 'cors' })
+      .then((response) => response.json())
+      .then((response) => {
+        that.toggleLoading();
+        that.parseResponse(response);
+      })
+      .catch(() => {
+        this.toggleError();
+        return false;
+      });
+  }
 
-        this.UI.renderResult(response)
-    }
-    submit(){
-        let value = this.UI.getInputValue();
-        if(value.trim() ==='' && typeof value === 'undefined'){
-            return false
-        }
-        this.user.city = value
-        this.getWeather()
-    }
+  parseResponse(response) {
+    if (response.cod !== 200) { this.toggleError(); return; }
 
-    showResult(){
+    this.UI.renderResult(response);
+  }
 
+  submit() {
+    const value = this.UI.getInputValue();
+    if (value.trim() === '' && typeof value === 'undefined') {
+      return false;
     }
+    this.user.city = value;
+    this.getWeather();
+    return true;
+  }
 
-    toggleError(error){
-        this.UI.toggleError();
-    }
+  toggleError() {
+    this.UI.toggleError();
+  }
 }
 
-export default App
+export default App;
