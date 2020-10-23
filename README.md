@@ -21,7 +21,7 @@
     <a href="#about-the-project"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://rawcdn.githack.com/tigamadou/weathit/7db0160361adca358d63c3a1ab5ce12d7cce127a/dist/index.html" target="_blank" >View Demo</a>
+    <a href="https://rawcdn.githack.com/tigamadou/weathit/18b5af9d6906c0f1b8c891e359d698854069f2f3/dist/index.html" target="_blank" >View Demo</a>
     ·
     <a href="https://github.com/tigamadou/weathit/issues">Report Bug</a>
     ·
