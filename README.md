@@ -36,6 +36,8 @@
 
 * [About the Project](#about-the-project)
   * [Built With](#built-with)
+  * [Features](#features)
+  * [Future features](#future-features)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
@@ -62,7 +64,15 @@ This is a weather app built following the [Microverse Program](https://microvers
 * [SCSS]()
 * [BULMA]()
 
+## Features
+* User Ip and City auto detection
+* City current weather data
 
+
+## Future features
+- n-day forecast starting from the current day 
+- Hourly forecast 
+- Animated card background for each weather condition
 
 <!-- GETTING STARTED -->
 ## Getting Started
