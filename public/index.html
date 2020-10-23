@@ -7,6 +7,59 @@
   </head>
 
   <body>      
- 
+    <div class="hero is-primary">
+      <div class="hero-body">
+        <div class="app">
+
+          <h1 class="title">WeathIt</h1>
+          <p class="subtitle">StandAlone weather App</p>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="app">
+      <div class="card">
+        <div class="card-content">
+          <form >
+            <div class="field">
+              <label class="label">City Name</label>
+              <div class="field has-addons">
+                <div class="control  is-expanded">
+                  <input class="input is-large" type="text" placeholder="Enter a city name" required>
+                </div>
+                <div class="control">
+                  <button class="button is-primary is-large ">
+                    Search
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <br>
+      <div class="card is-hidden" id="result">
+        <div class="card-header">
+          <div class="card-header-title">
+            Results- <span class="city">City, country</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li class="day">
+              
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="notification is-primary is-light has-text-centered is-hidden" id="loadingSpinner">
+        <div class="button is-large is-loading is-text"></div>
+       
+      </div>
+      <div class="notification is-danger is-hidden" id="errorBlock">
+        <button class="delete"></button>
+        City Not Found
+      </div>
+    </div>
   </body>
 </html>
