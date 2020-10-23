@@ -19,10 +19,6 @@ body {
   margin: 0 auto;
   padding: 1rem;
 
-  * {
-    color: #fff;
-  }
-
   .title {
     font-size: 3rem;
     color: $primary;
@@ -35,6 +31,8 @@ body {
     background-attachment: fixed;
 
     &#result {
+      color: #fff;
+
       .card-content {
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.6));
       }

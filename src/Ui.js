@@ -11,6 +11,7 @@ class UI {
     this.errorBlock = document.querySelector('#errorBlock');
 
     this.result = {
+      units: document.getElementsByName('units'),
       cityName: document.querySelector('#result .cityName'),
       date: document.querySelector('#result .date'),
       weather: document.querySelector('#result .weather'),

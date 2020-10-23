@@ -5,6 +5,7 @@ class App {
     this.OPENWEATHERAPIKEY = OPENWEATHERAPIKEY;
     this.IPINFOAPIKEY = IPINFOAPIKEY;
     this.isLoading = false;
+    this.units = 'imperial';
     this.UI = new UI();
   }
 
@@ -28,7 +29,7 @@ class App {
   async getWeather() {
     this.toggleLoading();
     const that = this;
-    await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.user.city}&appid=${this.OPENWEATHERAPIKEY}&units=metric`, { mode: 'cors' })
+    await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.user.city}&appid=${this.OPENWEATHERAPIKEY}&units=${this.units}`, { mode: 'cors' })
       .then((response) => response.json())
       .then((response) => {
         that.toggleLoading();
@@ -52,12 +53,17 @@ class App {
       return false;
     }
     this.user.city = value;
+
     this.getWeather();
     return true;
   }
 
   toggleError() {
     this.UI.toggleError();
+  }
+
+  setUnits(units) {
+    this.units = units;
   }
 }
 
